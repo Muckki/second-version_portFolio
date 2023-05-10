@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.atags {
+  text-decoration: none;
+  border: 0.1em solid black;
+  padding: 0.2em;
+  border-radius: 0.4em;
+  color: black;
+  background-color: antiquewhite;
+}
+@keyframes aura {
+  0% {
+    border: 4em solid rgba(255, 255, 255);
+  }
+  50% {
+    border: 4.5em solid rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    border: 4em solid rgba(255, 255, 255);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    background-color: black;
+  }
+  100% {
+    opacity: 1;
+    background-color: white;
+  }
+}
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  background-color: black;
+}
+
+body.enter {
+  opacity: 1;
+  animation: fadeIn 3s;
+}
+
+img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  width: inherit;
+  height: inherit;
+  display: flex;
+}
+
+header {
+  display: flex;
+  padding-top: 2.5em;
+  padding-left: 8em;
+  width: 65em;
+  height: 5em;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.book-viewer {
+  width: 70em;
+  height: 80.4em;
+  position: absolute;
+  top: 7em;
+  left: 21.5em;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: opacity 1s;
+}
+
+.book-viewer::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: -2em;
+  left: -20px;
+  width: 74.5em;
+  height: 85.6em;
+  border: 2em solid rgba(255, 255, 255);
+  border-radius: 4em;
+  filter: blur(0.5em);
+  animation: aura 2s infinite;
+}
+
+.book-viewer.active {
+  opacity: 1;
+}
+
+.book-name {
+  position: absolute;
+  width: 20em;
+  left: 5.3em;
+  top: 1.4em;
+  height: auto;
+  font-size: 2.4em;
+  text-align: center;
+}
+
+.pre {
+  position: absolute;
+  top: 4em;
+  left: 5.5em;
+  z-index: 99;
+}
+.next {
+  position: absolute;
+  top: 4em;
+  left: 9em;
+  z-index: 99;
+}
+.close {
+  position: absolute;
+  right: 5.5em;
+  top: 4em;
+  z-index: 99;
+}
+
+.viewport {
+  width: 60em;
+  height: 69em;
+  position: absolute;
+  left: 7%;
+  bottom: 4%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.bookcase {
+  background-image: url(./assets/wood_bookcase_front_side.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 10%;
+  width: 65em;
+  height: 65em;
+  position: absolute;
+  top: 23%;
+  left: 58%;
+  filter: blur(0.5px);
+}
+
+.bookcase::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: -5px;
+  left: -20px;
+  width: 65em;
+  height: 66em;
+  border: 4em solid rgba(255, 255, 255);
+  border-radius: 4em;
+  filter: blur(1em);
+  animation: aura 1.5s infinite;
+}
+
+.floor-case {
+  width: 33.9em;
+  height: 36em;
+  margin-left: 14.5em;
+  margin-top: 16em;
+  display: grid;
+  grid-template-rows: 11em 11.7em 13.3em;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-areas:
+    "my my my my my my my my my my my my"
+    "mfu mfu mfu mfu mfu mfu mfu mfu mfu mfu mfu mfu"
+    "bfu bfu bfu bfu bfu bfu bfu bfu bfu bfu bfu bfu";
+}
+
+.floor.top,
+.floor.middle,
+.floor.bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.floor.top {
+  grid-area: my;
+}
+.floor.middle {
+  grid-area: mfu;
+}
+.floor.bottom {
+  grid-area: bfu;
+}
+
+.floor.top .book {
+  width: 2.825em;
+  height: 11em;
+}
+.floor.middle .book {
+  width: 2.825em;
+  height: 11.7em;
+}
+
+.floor.bottom .book {
+  width: 2.825em;
+  height: 13.3em;
+}
+
+.book {
+  background-color: #fff;
+  border: 0.1em solid black;
+  border-radius: 0.3em 0.3em 0 0;
+}
+
+.book.future {
+  visibility: hidden;
+}
+.book.future.yet {
+  visibility: visible;
+  background-color: rgb(251, 183, 81);
+  cursor: pointer;
+  height: 8.9em;
+  width: 2.5em;
+  z-index: 99;
+}
+.book.clear {
+  cursor: pointer;
+  z-index: 99;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  padding: 0.4em;
+}
+
+.book.clear:hover {
+  transition: 0.5s all;
+  background-color: skyblue;
+}
