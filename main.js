@@ -46,6 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let clickedElement = e.currentTarget;
         i = Array.prototype.indexOf.call(books, clickedElement);
         console.log(i);
+        if (i <= 3 && i > 0) {
+          createMystory();
+        } else if (i > 3) {
+          createHtmlBooks();
+        } else if (i > 9) {
+          createJsBooks();
+        }
       } else if (bookViewer.classList.contains("active")) {
         bookName.innerHTML = e.target.innerHTML;
         viewPort.innerHTML = "";
@@ -57,19 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   pre.addEventListener("click", function () {
-    if (i <= 2 && i > 0) {
+    if (i <= 3 && i > 0) {
       i -= 1;
       createMystory();
-    } else if (i == 3) {
+    } else if (i == 4) {
       i -= 1;
       createMystory();
-    } else if (i <= 8 && i > 2 && books[i].classList.contains("HTML")) {
+    } else if (i <= 9 && i > 3 && books[i].classList.contains("HTML")) {
       i--;
       createHtmlBooks();
-    } else if (i == 8 && books[i].classList.contains("JS")) {
+    } else if (i == 9 && books[i].classList.contains("JS")) {
       i--;
       createHtmlBooks();
-    } else if (i > 8 && i <= 12 && books[i].classList.contains("JS")) {
+    } else if (i > 9 && i <= 13 && books[i].classList.contains("JS")) {
       i--;
       createJsBooks();
     } else if (i == 0) {
@@ -78,22 +85,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   next.addEventListener("click", function () {
-    if (i <= 1 && i >= 0) {
+    if (i <= 2 && i >= 0) {
       i += 1;
       createMystory();
-    } else if (i == 2) {
+    } else if (i == 3) {
       i++;
       createHtmlBooks();
-    } else if (i < 7 && i > 2 && books[i].classList.contains("HTML")) {
+    } else if (i < 8 && i > 3 && books[i].classList.contains("HTML")) {
       i++;
       createHtmlBooks();
-    } else if (i == 7 && books[i].classList.contains("HTML")) {
+    } else if (i == 8 && books[i].classList.contains("HTML")) {
       i++;
       createJsBooks();
-    } else if (i >= 8 && i < 12 && books[i].classList.contains("JS")) {
+    } else if (i >= 9 && i < 13 && books[i].classList.contains("JS")) {
       i++;
       createJsBooks();
-    } else if (i === 12) {
+    } else if (i === 13) {
       alert("책의 마지막입니다.");
     }
   });
@@ -102,8 +109,8 @@ document.addEventListener("DOMContentLoaded", function () {
     viewPort.innerHTML = "";
     bookName.innerHTML = books[i].innerHTML;
     const createaTag = document.createElement("a");
-    createaTag.href = `/HTMLCSSProjects/Mission-0${i - 2}/Mission-0${
-      i - 2
+    createaTag.href = `/HTMLCSSProjects/Mission-0${i - 3}/Mission-0${
+      i - 3
     }/index.html`;
     createaTag.innerHTML = "보러가기";
     createaTag.className = "atags";
@@ -123,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createImg.style.position = "absolute";
       createImg.style.top = "8em";
       createImg.style.left = "0.5em";
-      createImg.src = `/HTMLCSSProjects/img/HC${i - 2}.PNG`;
+      createImg.src = `/HTMLCSSProjects/img/HC${i - 3}.PNG`;
       viewPort.appendChild(createImg);
     });
     createaTag.addEventListener("mouseout", () => {
@@ -137,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     viewPort.innerHTML = "";
     bookName.innerHTML = books[i].innerHTML;
     const createaTagJs = document.createElement("a");
-    createaTagJs.href = `/JavaScriptProjects/JS_${i - 7}/index.html`;
+    createaTagJs.href = `/JavaScriptProjects/JS_${i - 8}/index.html`;
     createaTagJs.innerHTML = "보러가기";
     createaTagJs.className = "atags";
     createaTagJs.target = "_blank";
@@ -156,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createImg.style.position = "absolute";
       createImg.style.top = "8em";
       createImg.style.left = "0.5em";
-      createImg.src = `/JavaScriptProjects/img/JS${i - 7}.PNG`;
+      createImg.src = `/JavaScriptProjects/img/JS${i - 8}.PNG`;
       viewPort.appendChild(createImg);
     });
 
@@ -301,6 +308,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <br><br>저는 이대로 끝날 생각이 없습니다. 프론트엔드 더 나아가서 백엔드도, 가능하다면 빅데이터 혹은 보안관련해서도
         계속해서 공부 해 나갈 것입니다. 저를 선택해주신다면 후회하지 않으실겁니다. 그런말이 있지 않습니까?<br><br>
         "힘들때 도와준건 못잊는다."
+        `;
+      } else if (i == 3) {
+        createMyStory.innerHTML = `
+         Phone : <a class="gitHub" href="tel:010-4291-7151">010-4291-7151;</a><br><br>
+        E-mail : <a class="gitHub" href="mailto:ckdduq0508@gmail.com">ckdduq0508@gmail.com;</a><br><br>
+        GitHub : <a class="gitHub" href="https://github.com/Muckki" target="_blank">
+        Link Here;</a><br>
         `;
       }
     }
