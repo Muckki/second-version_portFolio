@@ -20,7 +20,7 @@
     border: 4em solid rgba(255, 255, 255);
   }
   50% {
-    border: 4.5em solid rgba(255, 255, 255, 0.9);
+    border: 4.5em solid rgba(255, 255, 255);
   }
   100% {
     border: 4em solid rgba(255, 255, 255);
@@ -166,7 +166,7 @@ header {
   height: 66em;
   border: 4em solid rgba(255, 255, 255);
   border-radius: 4em;
-  filter: blur(1em);
+  filter: blur(0.8em);
   animation: aura 1.5s infinite;
 }
 

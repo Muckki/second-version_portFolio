@@ -48,9 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(i);
         if (i <= 3 && i > 0) {
           createMystory();
-        } else if (i > 3) {
+        } else if (i === 4) {
+          createWorks();
+        } else if (i > 4) {
           createHtmlBooks();
-        } else if (i > 9) {
+        } else if (i > 10) {
           createJsBooks();
         }
       } else if (bookViewer.classList.contains("active")) {
@@ -64,19 +66,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   pre.addEventListener("click", function () {
-    if (i <= 3 && i > 0) {
+    if (i <= 4 && i > 0) {
       i -= 1;
       createMystory();
-    } else if (i == 4) {
+    } else if (i == 5) {
       i -= 1;
-      createMystory();
-    } else if (i <= 9 && i > 3 && books[i].classList.contains("HTML")) {
+      createWorks();
+    } else if (i <= 10 && i > 5 && books[i].classList.contains("HTML")) {
       i--;
       createHtmlBooks();
-    } else if (i == 9 && books[i].classList.contains("JS")) {
+    } else if (i == 10 && books[i].classList.contains("JS")) {
       i--;
       createHtmlBooks();
-    } else if (i > 9 && i <= 13 && books[i].classList.contains("JS")) {
+    } else if (i > 10 && i <= 14 && books[i].classList.contains("JS")) {
       i--;
       createJsBooks();
     } else if (i == 0) {
@@ -90,27 +92,80 @@ document.addEventListener("DOMContentLoaded", function () {
       createMystory();
     } else if (i == 3) {
       i++;
-      createHtmlBooks();
-    } else if (i < 8 && i > 3 && books[i].classList.contains("HTML")) {
+      createWorks();
+    } else if (i == 4) {
       i++;
       createHtmlBooks();
-    } else if (i == 8 && books[i].classList.contains("HTML")) {
+    } else if (i < 9 && i > 3 && books[i].classList.contains("HTML")) {
+      i++;
+      createHtmlBooks();
+    } else if (i == 9 && books[i].classList.contains("HTML")) {
       i++;
       createJsBooks();
-    } else if (i >= 9 && i < 13 && books[i].classList.contains("JS")) {
+    } else if (i >= 9 && i < 14 && books[i].classList.contains("JS")) {
       i++;
       createJsBooks();
-    } else if (i === 13) {
+    } else if (i == 14) {
       alert("책의 마지막입니다.");
     }
   });
+  const createWorks = () => {
+    viewPort.innerHTML = "";
+    bookName.innerHTML = books[i].innerHTML;
+    const createaTag = document.createElement("a");
+    createaTag.href = `https://neon-lokum-cf54ef.netlify.app`;
+    createaTag.innerHTML =
+      "Netlify Add : https://neon-lokum-cf54ef.netlify.app";
+    createaTag.className = "atags";
+    createaTag.target = "_blank";
+    createaTag.style.position = "relative";
+    createaTag.style.left = "1.5em";
+    createaTag.style.top = "1.5em";
+    createaTag.style.fontSize = "2em";
+    createaTag.style.display = "block";
+    createaTag.style.width = "27em";
+    createaTag.style.height = "2.5em";
+    createaTag.style.fontWeight = "bold";
+    createaTag.style.border = "0.15em solid black";
+    createaTag.style.zIndex = "99";
+    viewPort.appendChild(createaTag);
 
+    const createaTags = document.createElement("a");
+    createaTags.href = `https://github.com/Muckki/nCafeViral`;
+    createaTags.innerHTML = "Github Add : https://github.com/Muckki/nCafeViral";
+    createaTags.className = "atags";
+    createaTags.target = "_blank";
+    createaTags.style.position = "relative";
+    createaTags.style.left = "1.5em";
+    createaTags.style.top = "2.5em";
+    createaTags.style.fontSize = "2em";
+    createaTags.style.zIndex = "99";
+    createaTags.style.display = "block";
+    createaTags.style.fontWeight = "bold";
+    createaTags.style.width = "27em";
+    createaTags.style.height = "2.5em";
+    createaTags.style.border = "0.15em solid black";
+    createaTags.style.paddingTop = "0.4em";
+
+    viewPort.appendChild(createaTags);
+    const createTextDiv = document.createElement("div");
+    createTextDiv.innerHTML =
+      "흔히 말하는 우매함의 봉우리에 올라 나는 제법 잘 한다! 라며 무슨 생각으로 한지 모르지만 크몽이라는 프리랜서 사이트에 등록을 했고 일이 들어왔습니다.<br><br>막상 일이 들어오니 불안함에 떨며 어떻게 해야 하나 라며 생각하다 하던대로 하자 라고 생각하고 작업을 시작했습니다.<br>어렵지 않은 작업이였지만 당시엔 실수하고 틀리고 누락되면 안된다! 라는 생각으로 근 2일간 많은 시간을 투자했습니다.<br><br>결론적으론 요구사항을 전부 해결 했지만 아쉬움이 많이 남는 작업이였습니다만.. 외주를 맡겨주신 분은 만족한다며 다음에 유지보수 할 일이 생기면 연락 주겠다고 했습니다. 정말 감사한 경험이였고 조금은 자신을 갖게 된 일이였습니다.";
+    createTextDiv.style.fontSize = "2em";
+    createTextDiv.style.letterSpacing = "0.1em";
+    createTextDiv.style.padding = "1.5em";
+    createTextDiv.style.position = "relative";
+    createTextDiv.style.top = "2em";
+    createTextDiv.style.fontWeight = "bold";
+    viewPort.appendChild(createTextDiv);
+    bookSound();
+  };
   function createHtmlBooks() {
     viewPort.innerHTML = "";
     bookName.innerHTML = books[i].innerHTML;
     const createaTag = document.createElement("a");
-    createaTag.href = `/HTMLCSSProjects/Mission-0${i - 3}/Mission-0${
-      i - 3
+    createaTag.href = `/HTMLCSSProjects/Mission-0${i - 2}/Mission-0${
+      i - 2
     }/index.html`;
     createaTag.innerHTML = "보러가기";
     createaTag.className = "atags";
@@ -130,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createImg.style.position = "absolute";
       createImg.style.top = "8em";
       createImg.style.left = "0.5em";
-      createImg.src = `/HTMLCSSProjects/img/HC${i - 3}.PNG`;
+      createImg.src = `/HTMLCSSProjects/img/HC${i - 2}.PNG`;
       viewPort.appendChild(createImg);
     });
     createaTag.addEventListener("mouseout", () => {
@@ -144,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
     viewPort.innerHTML = "";
     bookName.innerHTML = books[i].innerHTML;
     const createaTagJs = document.createElement("a");
-    createaTagJs.href = `/JavaScriptProjects/JS_${i - 8}/index.html`;
+    createaTagJs.href = `/JavaScriptProjects/JS_${i - 7}/index.html`;
     createaTagJs.innerHTML = "보러가기";
     createaTagJs.className = "atags";
     createaTagJs.target = "_blank";
@@ -163,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
       createImg.style.position = "absolute";
       createImg.style.top = "8em";
       createImg.style.left = "0.5em";
-      createImg.src = `/JavaScriptProjects/img/JS${i - 8}.PNG`;
+      createImg.src = `/JavaScriptProjects/img/JS${i - 7}.PNG`;
       viewPort.appendChild(createImg);
     });
 
@@ -250,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bookName.innerHTML = books[i].innerHTML;
     const createMyStory = document.createElement("div");
     viewPort.appendChild(createMyStory);
-    storyBook();
+
     bookSound();
 
     createMyStory.style.position = "absolute";
@@ -265,11 +320,11 @@ document.addEventListener("DOMContentLoaded", function () {
     createMyStory.style.overflow = "auto";
     createMyStory.style.zIndex = "99";
     viewPort.appendChild(createMyStory);
-
+    storyBook();
     function storyBook() {
       if (i == 0) {
         createMyStory.innerHTML = `
-        안녕하십니까. 영업만 10년 차.. <br>궂은 일 많이 해 온 김창엽 이라고 합니다.
+        안녕하십니까. 영업직만 10년 차.. <br>궂은 일 많이 해 온 김창엽 이라고 합니다.
         <br><br>지난 10년간 주로 영업 분야에서 일해왔고, 어떤 회사에서든<br>항상 열심히 일하며 필요한 인재로 인정받았습니다.<br>저는 출근과 근무시간에 집중하는 것을 당연시하며,<br>회사에서 절 놓치기 힘들게 하는 열정을 가지고 일해왔습니다.<br><br>
         하지만 현재, 결국 기술이 중요하다는 것을 깨닫게 되었습니다.<br>최근에 다니던 IT 아카데미에서 직접 개발 공부는 아니었지만,<br>어떤 마인드로 공부해야 하는지, 어떤 직무군이 있는지,<br>그리고 그들이 어떻게 관련되어 있는지에 대한 지식을 쌓기 위해 열심히 노력했습니다.
         그 과정에서 저는 비교적 대부분의 사람들 보다 빠르게 익힐 수 있다는 것을 알게 되었고,<br>"나는 잘할 수 있겠구나!"라는 자신감을 얻게 되었습니다. 이 자신감이 확실한 것임을 입증할 수 있다면<br><br>저는 반드시 이 회사에서 필요한 인재임을 느끼게 해드리겠습니다.
@@ -311,11 +366,18 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
       } else if (i == 3) {
         createMyStory.innerHTML = `
-         Phone : <a class="gitHub" href="tel:010-4291-7151">010-4291-7151;</a><br><br>
-        E-mail : <a class="gitHub" href="mailto:ckdduq0508@gmail.com">ckdduq0508@gmail.com;</a><br><br>
+         Phone : <a class="gitHub" href="tel:010-4291-7151">010-4291-7151</a><br><br>
+        E-mail : <a class="gitHub" href="mailto:ckdduq0508@gmail.com">ckdduq0508@gmail.com</a><br><br>
         GitHub : <a class="gitHub" href="https://github.com/Muckki" target="_blank">
-        Link Here;</a><br>
+        Click Here!</a><br>
         `;
+        createMyStory.style.fontWeight = "bold";
+        createMyStory.style.padding = "0.5em";
+        createMyStory.style.color = "black";
+        createMyStory.style.border = "0.15em solid black";
+        createMyStory.style.left = "1.2em";
+        createMyStory.style.top = "0.8em";
+        createMyStory.style.fontSize = "2.5em";
       }
     }
   }
